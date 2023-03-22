@@ -13,11 +13,8 @@ to start first setting of the bot
 - insert token
 -and write function
 
-| :warning: WARNING          |
-|:---------------------------|
-| "pip install python-telegram-bot==13.7"   |
+> **Note**
+> This is a note
 
-
-| :boom: DANGER              |
-|:---------------------------|
-| TypeError: Updater.__init__() got an unexpected keyword argument 'use_context |
+> **Warning**
+> This is a warning
