@@ -18,3 +18,10 @@ to start first setting of the bot
 
 > **Warning**
 > This is a warning
+
+| :exclamation:  This is very important   |
+|-----------------------------------------|
+
+
+| :zap:        Ignore at your own risk!   |
+|-----------------------------------------|
