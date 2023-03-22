@@ -1,8 +1,28 @@
-import telegram.ext 
-
-token = "6004273466:AAF0Cz7nFtrhBJ8HgW5SrnC_k958kNsQatM"
-#print(bot.get_me())
-updater = telgram.ext.Updater("6004273466:AAF0Cz7nFtrhBJ8HgW5SrnC_k958kNsQatM", use_context=True)
+from telegram.ext import *
 
 
-dispatcher= updater.dispatcher
+import keys
+
+
+
+
+def start_command(update, context):
+    update.message.reply_text("Hello and Welcome")
+
+
+def help(update, context):
+    update.message.reply_text(
+    """
+    /strat ->Welcome to Bot
+    /help -> ask for help
+    """   
+    )
+
+if __name__ == '__main__':
+    updater = Updater(keys.token, use_context=True)
+    dp = updater.dispatcher
+
+    # Commands
+    dp.add_handler(CommandHandler('start', start_command))
+    updater.start_polling(1.0)
+    updater.idle()
