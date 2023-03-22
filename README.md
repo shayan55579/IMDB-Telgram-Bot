@@ -19,9 +19,9 @@ to start first setting of the bot
 > **Warning**
 > This is a warning
 
-| :exclamation:  This is very important   |
+| :exclamation: TypeError: Updater.__init__() got an unexpected keyword argument 'use_context |
 |-----------------------------------------|
 
 
-| :zap:        Ignore at your own risk!   |
+| ::white_check_mark: "pip install python-telegram-bot==13.7" |
 |-----------------------------------------|
