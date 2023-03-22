@@ -23,5 +23,5 @@ to start first setting of the bot
 |-----------------------------------------|
 
 
-| ::white_check_mark: "pip install python-telegram-bot==13.7" |
+| :white_check_mark: "pip install python-telegram-bot==13.7" |
 |-----------------------------------------|
