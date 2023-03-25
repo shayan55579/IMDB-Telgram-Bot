@@ -9,7 +9,6 @@ import keys
 def start_command(update, context):
     update.message.reply_text("Hello and Welcome")
 
-
 def help(update, context):
     update.message.reply_text(
     """
@@ -28,5 +27,7 @@ if __name__ == '__main__':
     # Commands
     dp.add_handler(CommandHandler('start', start_command))
     dp.add_handler(CommandHandler('help', help))
+    
+    
     updater.start_polling(1.0)
     updater.idle()
