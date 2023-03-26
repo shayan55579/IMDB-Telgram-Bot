@@ -3,12 +3,12 @@ from telegram.ext import *
 
 import keys
 
-
+import imdbAPI
 
 
 def start_command(update, context):
     update.message.reply_text("Hello and Welcome")
-
+    
 def help(update, context):
     update.message.reply_text(
     """
@@ -19,6 +19,8 @@ def help(update, context):
     /Show the selected movies information!
     """   
     )
+def search_ithem(update,context):
+    update.message.reply_text(imdbAPI.Search_Movie())
 
 if __name__ == '__main__':
     updater = Updater(keys.token, use_context=True)
