@@ -1,10 +1,10 @@
 import requests
 
 
-def Search_Movie():
+def Search_Movie(search_ithem):
     #https://imdb-api.com/en/API/SearchMovie/k_0cgposgg/inception 2010
     IMDB_USER_KEY = r'k_0cgposgg'
-    search_ithem = str(input())
+    #search_ithem = str(input())
     IMDB_API = r'https://imdb-api.com/en/API/Search/{}/{}'.format(IMDB_USER_KEY,search_ithem)
     response = requests.get(IMDB_API)
     feed = response.json()
