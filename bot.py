@@ -1,9 +1,6 @@
-from telegram.ext import * # for Telegram methods
-
+from telegram.ext import *
 import keys
-
 import imdbAPI
-
 
 def start_command(update, context):
     name = update.message.from_user.first_name
@@ -19,7 +16,6 @@ def help(update, context):
     /Show the information!
     """
     )
-
 
 # Global variable
 user_input = None
@@ -37,9 +33,8 @@ def get_name_moive(update, context):
     list_of_movies = imdbAPI.search_imdb_movies(user_input)
     reply_text = '\n'.join([f"{index}. {movie_title}" for index, movie_title in enumerate(list_of_movies, start=1)])
     context.bot.send_message(chat_id=update.effective_chat.id, text=reply_text)
-    update.message.reply_text("Choose Number")
+    update.message.reply_text("Choose Number for see title")
     return 2
-
 
 def get_number_of_movie(update, context):
     global number_movie, selected_movie
@@ -47,24 +42,38 @@ def get_number_of_movie(update, context):
     number_movie = int(number_movie)
     selected_movie = list_of_movies[number_movie - 1]
     update.message.reply_text(selected_movie)
-    return ConversationHandler.END
+    update.message.reply_text("Do You want to see Movie info?(type(yse))")
+    return 3
 
+def get_movie_info(update, context):
+    global number_movie
+    movie_info = imdbAPI.get_movie_info_by_number(number_movie - 1)
+    if movie_info:
+        # extract the movie information
+        title = movie_info['title']
+        image_url = movie_info['image']
+        description = movie_info['description']
+
+        # send the movie information to the user
+        context.bot.send_photo(chat_id=update.effective_chat.id, photo=image_url)
+        context.bot.send_message(chat_id=update.effective_chat.id, text=f"Title: {title}\nDescription: {description}")
+    else:
+        update.message.reply_text(f"No movie found with the name {selected_movie}.")
+    return ConversationHandler.END
 
 def cancel(update, context):
     update.message.reply_text("Canceled")
     return ConversationHandler.END
 
-
 conv_handler = ConversationHandler(
     entry_points=[CommandHandler('search', search)],
     states={
         1: [MessageHandler(Filters.text, get_name_moive)],
-        2: [MessageHandler(Filters.text, get_number_of_movie)]
+        2: [MessageHandler(Filters.text, get_number_of_movie)],
+        3: [MessageHandler(Filters.text, get_movie_info)]
     },
     fallbacks=[CommandHandler('cancel', cancel)]
 )
-
-
 
 if __name__ == '__main__':
     updater = Updater(keys.token, use_context=True)
