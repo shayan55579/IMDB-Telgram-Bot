@@ -1,4 +1,10 @@
 # IMDB-Telgram-Bot
+![Image 1](Pics/1.jpg)
+![Image 2](Pics/2.png)
+![Image 3](Pics/3.png)
+![Image 4](Pics/4.png)
+![Image 5](Pics/5.png)
+![Image 6](Pics/6.png)
 ## For strat
 > open BotFather in telegram
 use 
